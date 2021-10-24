@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Employee } from '../shared/employee.model';
 import { EmployeeService } from '../shared/employee.service';
 
+declare var M: any;
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -26,14 +27,14 @@ export class EmployeeComponent implements OnInit {
       salary: null,
     };
   }
-  // onSubmit(form: NgForm) {
+  onSubmit(form: NgForm) {
   //   if (form.value._id == "") {
-  //     this.employeeService.postEmployee(form.value).subscribe((res) => {
-  //       this.resetForm(form);
+       this.employeeService.postEmployee(form.value).subscribe((res) => {
+        this.resetForm(form);
   //       this.refreshEmployeeList();
-  //       M.toast({ html: 'Saved successfully', classes: 'rounded' });
-  //     });
-  //   }
+       M.toast({ html: 'Saved successfully', classes: 'rounded' });
+     });
+   }
   //   else {
   //     this.employeeService.putEmployee(form.value).subscribe((res) => {
   //       this.resetForm(form);
